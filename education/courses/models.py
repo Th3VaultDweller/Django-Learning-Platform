@@ -22,13 +22,13 @@ class Course(models.Model):
 
     owner = models.ForeignKey(
         User, related_name="courses_created", on_delete=models.CASCADE
-    )
+    )  # a teacher that created the course
     subject = models.ForeignKey(
         Subject, related_name="courses", on_delete=models.CASCADE
     )
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-    overview = models.TextField()
+    overview = models.TextField()  # short info about the course
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
