@@ -22,7 +22,7 @@ class Course(models.Model):
 
     owner = models.ForeignKey(
         User, related_name="courses_created", on_delete=models.CASCADE
-    )  # a teacher that created the course
+    )  # a teacher who created the course
     subject = models.ForeignKey(
         Subject, related_name="courses", on_delete=models.CASCADE
     )
