@@ -2,4 +2,3 @@
 .env
 __pycache__
 db.sqlite3
-education\courses\migrations\__pycache__
