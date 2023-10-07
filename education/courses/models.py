@@ -81,16 +81,20 @@ class ItemBase(models.Model):
 
 
 class Text(ItemBase):
+    """A model for storing text content"""
     content = models.TextField()
 
 
 class File(ItemBase):
+    """A model for storing files such as PDFs"""
     file = models.FileField(upload_to="files")
 
 
 class Video(ItemBase):
+    """A model for storing video content"""
     video = models.URLField()
 
 
 class Image(ItemBase):
+    """A model for storing images"""
     image = models.FileField(upload_to="images")
