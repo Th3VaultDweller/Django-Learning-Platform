@@ -67,7 +67,7 @@ class ItemBase(models.Model):
     """An abstract model for all media content"""
 
     owner = models.ForeignKey(
-        User, related_name="%(class)es_related", on_delete=models.CASCADE
+        User, related_name="%(class)s_related", on_delete=models.CASCADE
     )
     title = models.CharField(max_length=255)
     creted = models.DateTimeField(auto_now_add=True)
