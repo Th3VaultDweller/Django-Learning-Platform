@@ -78,3 +78,19 @@ class ItemBase(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Text(ItemBase):
+    content = models.TextField()
+
+
+class File(ItemBase):
+    file = models.FileField(upload_to="files")
+
+
+class Video(ItemBase):
+    video = models.URLField()
+
+
+class Image(ItemBase):
+    image = models.FileField(upload_to="images")
