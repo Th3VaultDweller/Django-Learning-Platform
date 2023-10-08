@@ -67,9 +67,21 @@
             </div>
         </div> -->
     </nav>
+
     <!-- Content -->
-    
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
     <!-- Domready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // DOM loaded
+            {% block domready %}
+            {% endblock %}
+        })
+    </script>
 </body>
 
 </html>
