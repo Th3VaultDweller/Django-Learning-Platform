@@ -14,6 +14,12 @@ class OwnerMixin:
         return qs.filter(owner=self.request.user)
 
 
+class OwnerMixinEdit:
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
 class ManageCourseListView(ListView):
     """CRUD for managing the course list"""
 
