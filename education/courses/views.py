@@ -20,6 +20,12 @@ class OwnerMixinEdit:
         return super().form_valid(form)
 
 
+class OwnerCourseMixin(OwnerMixin):
+    model = Course
+    fields = ["subject", "title", "slug", "overview"]
+    success_url = reverse_lazy("manage_course_list")
+
+
 class ManageCourseListView(ListView):
     """CRUD for managing the course list"""
 
