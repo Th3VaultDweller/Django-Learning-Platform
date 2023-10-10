@@ -21,7 +21,7 @@ class OwnerEditMixin:
         return super().form_valid(form)
 
 
-class OwnerCourseMixin(OwnerMixin):
+class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     model = Course
     fields = ["subject", "title", "slug", "overview"]
     success_url = reverse_lazy("manage_course_list")
@@ -36,15 +36,17 @@ class ManageCourseListView(OwnerCourseEditMixin, ListView):
 
     model = Course
     template_name = "courses/manage/course/list.html"
+    permission_required = "course.view_course"
 
 
 class CourseCreateView(OwnerCourseEditMixin, CreateView):
-    pass
+    permission_required = "course.add_course"
 
 
 class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
-    pass
+    permission_required = "course.change_course"
 
 
 class CourseDeleteView(OwnerCourseEditMixin, DeleteView):
     template_name = "courses/manage/course/delete.html"
+    permission_required = "course.delete_course"
