@@ -40,13 +40,16 @@ class ManageCourseListView(OwnerCourseEditMixin, ListView):
 
 
 class CourseCreateView(OwnerCourseEditMixin, CreateView):
+    """For creating courses"""
     permission_required = "course.add_course"
 
 
 class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
+    """For updating/editing courses"""
     permission_required = "course.change_course"
 
 
 class CourseDeleteView(OwnerCourseEditMixin, DeleteView):
+    """For deleting courses"""
     template_name = "courses/manage/course/delete.html"
     permission_required = "course.delete_course"
