@@ -31,7 +31,7 @@ class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
     template_name = "courses/manage/course/form.html"
 
 
-class ManageCourseListView(OwnerCourseEditMixin, ListView):
+class ManageCourseListView(OwnerCourseMixin, ListView):
     """CRUD for managing the course list"""
 
     model = Course
