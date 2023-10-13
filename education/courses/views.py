@@ -64,12 +64,13 @@ class CourseDeleteView(OwnerCourseMixin, DeleteView):
 
 
 class CourseModuleUpdateView(TemplateResponseMixin, View):
-    """Works with formsets that add, update or delete modules of a course"""
+    """Works with formsets that add, update or delete modules of the course"""
 
     template_name = "courses/manage/module/formset.html"
     course = None
 
     def get_formset(self, data=None):
+        """The method to avoid repeating the source code of a formset"""
         return ModuleFormSet(instance=self.course, data=data)
 
     def dispatch(self, request, pk):
@@ -77,10 +78,12 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
         return super().dispatch(request, pk)
 
     def get(self, request, *args, **kwargs):
+        """The method used for GET requests"""
         formset = self.get_formset()
         return self.render_to_response({"course": self.course, "forms": formset})
 
     def post(self, request, *args, **kwargs):
+        """The method used for POST requests"""
         formset = self.get_formset(data=request.POST)
         if formset.is_valid():
             formset.save()
