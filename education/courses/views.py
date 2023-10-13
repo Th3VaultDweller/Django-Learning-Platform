@@ -94,6 +94,8 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
 
 
 class ContentCreateUpdateView(TemplateResponseMixin, View):
+    """Used for creating and updating the content of different models"""
+
     module = None
     model = None
     obj = None
@@ -103,6 +105,12 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         if model_name in ["text", "video", "image", "file"]:
             return apps.get_model(app_label="courses", model_name=model_name)
         return None
+
+    def get_form(self, model, *args, **kwargs):
+        Form = modelform_factory(
+            model, exclude=["owner", "order", "created", "updated"]
+        )
+        return Form(*args, **kwargs)
 
     def dispatch(self, request, module_id, model_name, id=None):
         self.module = get_object_or_404(
