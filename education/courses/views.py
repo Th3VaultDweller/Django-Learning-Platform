@@ -64,6 +64,8 @@ class CourseDeleteView(OwnerCourseMixin, DeleteView):
 
 
 class CourseModuleUpdateView(TemplateResponseMixin, View):
+    """Works with formsets that add, update or delete modules of a course"""
+
     template_name = "courses/manage/module/formset.html"
     course = None
 
