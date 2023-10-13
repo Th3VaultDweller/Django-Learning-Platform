@@ -80,7 +80,7 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
     def get(self, request, *args, **kwargs):
         """The method used for GET requests"""
         formset = self.get_formset()
-        return self.render_to_response({"course": self.course, "forms": formset})
+        return self.render_to_response({"course": self.course, "formset": formset})
 
     def post(self, request, *args, **kwargs):
         """The method used for POST requests"""
