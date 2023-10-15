@@ -25,7 +25,7 @@ urlpatterns = [
     path(
         "content/int:<id>/delete",
         views.ContentDeleteView.as_view(),
-        name="module_conent_update",
+        name="module_content_delete",
     ),
     path(
         "module/<int:module_id>/",
