@@ -1,5 +1,6 @@
 from typing import Any
 
+from braces.views import CsrfExempMixin, JsonRequestResponceMixin
 from django import http
 from django.apps import apps
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -9,7 +10,6 @@ from django.urls import reverse_lazy
 from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-from braces.views import CsrfExempMixin, JsonRequestResponceMixin
 
 from .forms import ModuleFormSet
 from .models import Content, Course, Module
