@@ -91,39 +91,40 @@ html5sortable.min.js"></script>
 
     sortable('#modules', {
         forcePlaceholderSize: true,
-        placeholderClass: 'placeholder'})
-        [0].addEventListener('sortupdate', function(e) {
-            modulesOrder = {}
-            var modules = document.querySelectorAll('#modules li');
-            modules.forEach(function (module, index) {
-                // update index of a module
-                modulesOrder[module.dataset.id] = index;
-                // update index in the HTML element
-                module.querySelector('.order').innerHTML = index + 1;
-                // add a new order to the options of the HTTP query
-                option['body'] = JSON.stringify(modulesOrder);
-                // send a HTTP query
-                fetch(moduleOrderUrl, options)
-
-            });
+        placeholderClass: 'placeholder'
+    })[0].addEventListener('sortupdate', function(e) {
+        
+        modulesOrder = {}
+        var modules = document.querySelectorAll('#modules li');
+        modules.forEach(function (module, index) {
+            // update index of a module
+            modulesOrder[module.dataset.id] = index;
+            // update index in the HTML element
+            module.querySelector('.order').innerHTML = index + 1;
+            // add a new order to the options of the HTTP query
+            option['body'] = JSON.stringify(modulesOrder);
+            // send a HTTP request
+            fetch(moduleOrderUrl, options)
         });
+    });
         
-        const contentOrderUrl = '{% url "content_order" %}';
-        
-        sortable('#module-contents', {
+    const contentOrderUrl = '{% url 'content_order' %}';
+    
+    sortable('#module-contents', {
         forcePlaceholderSize: true,
-        placeholderClass: 'placeholder'})
-        [0].addEventLustener('sortupdate', function(e) {
-            contentOrder = {}
-            var contents = document.quesrySelectorAll('#module-contents div');
-            contents.forEach(function (content index) {
-                // update content index
-                contentOrder[content.dataset.id] = index;
-                // add new order to the options of HTTP query
-                options['body'] = JSON.stringify(contentOrder);
-                // send a HTTP query
-                fetch(contentOrderUrlm options)
+        placeholderClass: 'placeholder'
+    })[0].addEventLustener('sortupdate', function(e) {
+        
+        contentOrder = {}
+        var contents = document.quesrySelectorAll('#module-contents div');
+        contents.forEach(function (content index) {
+            // update content index
+            contentOrder[content.dataset.id] = index;
+            // add new order to the options of HTTP query
+            options['body'] = JSON.stringify(contentOrder);
+            // send a HTTP request
+            fetch(contentOrderUrlm options)
 
-            });
         });
+    });
 {% endblock %}
