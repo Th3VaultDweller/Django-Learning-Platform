@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView
 class StudentRegistrationView(CreateView):
     """Used for registering students for a course"""
 
+    # CreateView предоставляет функциональность создания модельных объектов
     # путь к шаблону, применяемому для прорисовки этого представления
     template_name = "students/student/registration.html"
     # форма для создания объектов, которая должна быть ModelForm
