@@ -1,6 +1,6 @@
 from typing import Any
 
-from braces.views import CsrfExempMixin, JsonRequestResponceMixin
+from braces.views import CsrfExemptMixin, JSONRequestResponseMixin
 from django import http
 from django.apps import apps
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -162,7 +162,7 @@ class ModuleContentListView(TemplateResponseMixin, View):
         return self.render_to_response({"module": module})
 
 
-class ModuleOrderView(CsrfExempMixin, JsonRequestResponceMixin, View):
+class ModuleOrderView(CsrfExemptMixin, JSONRequestResponseMixin, View):
     """Used for updating the sequence order of course's modules"""
 
     def post(self, request):
@@ -171,7 +171,7 @@ class ModuleOrderView(CsrfExempMixin, JsonRequestResponceMixin, View):
         return self.render_json_responce({"saved": "OK"})
 
 
-class ContentOrderView(CsrfExempMixin, JsonRequestResponceMixin, View):
+class ContentOrderView(CsrfExemptMixin, JSONRequestResponseMixin, View):
     """Used for arranging module's content"""
 
     def post(self, request):
