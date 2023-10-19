@@ -12,8 +12,11 @@ from django.views.generic.edit import CreateView
 class StudentRegistrationView(CreateView):
     """Used for registering students for a course"""
 
+    # путь к шаблону, применяемому для прорисовки этого представления
     template_name = "students/student/registration.html"
+    # форма для создания объектов, которая должна быть ModelForm
     form_class = UserCreationForm
+    # адрес перенаправления пользователя после успешной передачи формы
     success_url = reverse_lazy("stident_course_list")
 
     def form_valid(self, form):
