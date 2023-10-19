@@ -163,6 +163,7 @@ class ModuleContentListView(TemplateResponseMixin, View):
 
 
 class ModuleOrderView(CsrfExempMixin, JsonRequestResponceMixin, View):
+    """Used for update the sequence order of course's modules"""
     def post(self, request):
         for id, order in self.request_json.items():
             Module.objects.filter(id=id, course__owner=request.user).update(order=order)
