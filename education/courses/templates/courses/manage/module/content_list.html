@@ -14,7 +14,7 @@ Module {{ module.order|add:1 }}: {{ module.title }}
     <h3>Modules</h3>
     <ul id="modules">
         {% for m in course.modules.all %}
-        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
+        <li data-id="{{ m.id }}" {% if m==module %}class="selected" {% endif %}>
             <a href="{% url 'module_content_list' m.id %}">
                 <span>
                     Module <span class="order">{{ m.order|add:1 }}</span>
@@ -52,21 +52,21 @@ Module {{ module.order|add:1 }}: {{ module.title }}
     <h3>Add new content:</h3>
     <ul class="content-types">
         <li>
-            <a href="{% url 'module_content_create' module.id "text" %}">Text
+            <a href="{% url 'module_content_create' module.id " text" %}">Text
             </a>
         </li>
         <li>
-            <a href="{% url 'module_content_create' module.id "image" %}">
+            <a href="{% url 'module_content_create' module.id " image" %}">
                 Image
             </a>
         </li>
         <li>
-            <a href="{% url 'module_content_create' module.id "video" %}">
+            <a href="{% url 'module_content_create' module.id " video" %}">
                 Video
             </a>
         </li>
         <li>
-            <a href="{% url 'module_content_create' module.id "file" %}">
+            <a href="{% url 'module_content_create' module.id " file" %}">
                 File
             </a>
         </li>
@@ -75,4 +75,9 @@ Module {{ module.order|add:1 }}: {{ module.title }}
 
 {% endwith %}
 
+{% endblock %}
+
+{% block include_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.13.3/
+html5sortable.min.js"></script>
 {% endblock %}
