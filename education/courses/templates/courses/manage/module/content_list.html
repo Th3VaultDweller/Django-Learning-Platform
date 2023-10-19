@@ -91,6 +91,19 @@ html5sortable.min.js"></script>
 
     sortable('#modules', {
         forcePlaceholderSize: true,
-        placeholderClass: 'placeholder'
-    });
+        placeholderClass: 'placeholder'})
+        [0].addEventListener('sortupdate', function(e) {
+            modulesOrder = {}
+            var modules = document.querySelectorAll('#modules li');
+            modules.forEach(function (module, index) {
+                // update index of a module
+                modulesOrder[module.dataset.id] = index;
+                // update index in the HTML element
+                module.querySelector('.order').innerHTML = index + 1;
+                // add a new order to the options of the HTTP query
+                option['body'] = JSON.stringify(modulesOrder);
+                // sent a HTTP query
+                fetch(moduleOrderUrl, options)
+            });
+        });
 {% endblock %}
