@@ -83,7 +83,8 @@
         {% block content %}
         {% endblock %}
     </div>
-
+    {% block include_js %}
+    {% endblock %}
     <!-- Domready -->
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
