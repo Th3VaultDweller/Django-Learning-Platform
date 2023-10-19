@@ -4,6 +4,7 @@ from braces.views import CsrfExemptMixin, JSONRequestResponseMixin
 from django import http
 from django.apps import apps
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db.models import Count
 from django.forms.models import modelform_factory
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
@@ -12,7 +13,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from .forms import ModuleFormSet
-from .models import Content, Course, Module
+from .models import Content, Course, Module, Subject
 
 # Create your views here.
 
