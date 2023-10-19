@@ -199,3 +199,11 @@ class CourseListView(TemplateResponseMixin, View):
         return self.render_to_response(
             {"subjects": subjects, "subject": subject, "courses": courses}
         )
+
+
+class CourseDetailView(DetailView):
+    """Used for viewing a short summary of a course"""
+
+    model = Course
+    template_name = "courses/course/detail.html"
+    
