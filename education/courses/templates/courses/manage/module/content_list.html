@@ -88,4 +88,9 @@ html5sortable.min.js"></script>
         mode: 'same-origin'
     }
     const moduleOrderUrl = '{% url 'module_order' %}';
+
+    sortable('#modules', {
+        forcePlaceholderSize: true,
+        placeholderClass: 'placeholder'
+    });
 {% endblock %}
