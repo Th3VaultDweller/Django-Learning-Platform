@@ -3,8 +3,7 @@ from typing import Any
 from braces.views import CsrfExemptMixin, JSONRequestResponseMixin
 from django import http
 from django.apps import apps
-from django.contrib.auth.mixins import (LoginRequiredMixin,
-                                        PermissionRequiredMixin)
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Count
 from django.forms.models import modelform_factory
 from django.shortcuts import get_object_or_404, redirect, render
@@ -123,12 +122,15 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         )
         self.model = self.get_model(model_name)
         if id:
-            self.obj = get_object_or_404(self.model, id=id, owner=request.user)
+            self.obj = get_object_or_404(self.model, 
+                                         id=id, 
+                                         owner=request.user)
         return super().dispatch(request, module_id, model_name, id)
 
     def get(self, request, module_id, model_id, id=None):
         form = self.get_form(self.model, instance=self.obj)
-        return self.render_to_response({"form": form, "object": self.obj})
+        return self.render_to_response({"form": form, 
+                                        "object": self.obj})
 
     def post(self, request, module_id, model_name, id=None):
         form = self.get_form(
@@ -209,10 +211,9 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = "courses/course/detail.html"
 
-    # метод get_context_data() используется для того, 
+    # метод get_context_data() используется для того,
     # чтобы вставлять форму для зачисления в контекст прорисовки шаблонов
-    def get_context_data(self, **kwargs): 
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["enroll_form"] = CourseEnrollForm(
-            initial={"course": self.object})
+        context["enroll_form"] = CourseEnrollForm(initial={"course": self.object})
         return context
