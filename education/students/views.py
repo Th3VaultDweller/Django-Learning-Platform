@@ -21,7 +21,7 @@ class StudentRegistrationView(CreateView):
     # форма для создания объектов, которая должна быть ModelForm
     form_class = UserCreationForm
     # адрес перенаправления пользователя после успешной передачи формы
-    success_url = reverse_lazy("stident_course_list")
+    success_url = reverse_lazy("student_course_list")
 
     def form_valid(self, form):
         result = super().form_valid(form)
