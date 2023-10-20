@@ -18,6 +18,8 @@
         Instructor: {{ object.owner.get_full_name }}
       </p>
       {{ object.overview|linebreaks }}
+      
+      <!-- Enroll course button -->
       {% if request.user.is_authenticated %}
         <form action="{% url "student_enroll_course" %}" method="post">
           {{ enroll_form }}
