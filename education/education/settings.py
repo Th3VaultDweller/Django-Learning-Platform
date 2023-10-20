@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # My apps
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
+    'embed_video',
     # Default apps
     'django.contrib.admin',
     'django.contrib.auth',
