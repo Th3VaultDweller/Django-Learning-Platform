@@ -1,7 +1,10 @@
+from typing import Any
+
 from courses.models import Course
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -46,3 +49,14 @@ class StudentEnrollCourseView(LoginRequiredMixin, FormView):
 
     def get_success_url(self):
         return reverse_lazy("student_course_detail", args=[self.course.id])
+
+
+class StudentCourseListView(LoginRequiredMixin, ListView):
+    """Used for viewing the list of courses that have students in them"""
+
+    model = Course
+    template_name = "students/course/list.html"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(students__in=[self.request.user])
