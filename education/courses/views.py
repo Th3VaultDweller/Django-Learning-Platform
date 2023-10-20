@@ -209,7 +209,9 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = "courses/course/detail.html"
 
-    def get_context_data(self, **kwargs):
+    # метод get_context_data() используется для того, 
+    # чтобы вставлять форму для зачисления в контекст прорисовки шаблонов
+    def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
         context["enroll_form"] = CourseEnrollForm(
             initial={"course": self.object})
